@@ -10,8 +10,8 @@ public class Step : MonoBehaviour
 
     public TMP_Text stepCounterText;
 
-    public float speed = 10.0f;
-    public float strength = 1.0f;
+    public float time = 10.0f;
+    public float distance = 1.0f;
     public float multiplier = 1.0f;
 
     private float timer = 0;
@@ -19,7 +19,7 @@ public class Step : MonoBehaviour
 
     private void Start()
     {
-        timer = speed;
+        timer = time;
         UpdateUI();
     }
 
@@ -29,7 +29,7 @@ public class Step : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            stepSlider.value = 1 - (timer / speed);
+            stepSlider.value = 1 - (timer / time);
 
             if (timer <= 0f)
             {
@@ -43,14 +43,14 @@ public class Step : MonoBehaviour
     {
         if (!isRunning)
         {
-            timer = speed;
+            timer = time;
             isRunning = true;
         }
     }
 
     private void takeStep()
     {
-        stepCounter += strength * multiplier;
+        stepCounter += distance * multiplier;
 
         UpdateUI();
     }

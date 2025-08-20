@@ -1101,9 +1101,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Strength:
+  m_text: 'Distance:
 
-    Speed:
+    Time:
 
     Multiplier:'
   m_isRightToLeft: 0
@@ -1232,7 +1232,7 @@ GameObject:
   - component: {fileID: 511017808}
   - component: {fileID: 511017807}
   m_Layer: 5
-  m_Name: Strength Stat
+  m_Name: Distance Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,10 +1510,10 @@ MonoBehaviour:
         - m_Target: {fileID: 1399807622}
           m_TargetAssemblyTypeName: DisplayStats, Assembly-CSharp
           m_MethodName: onHover
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 538724692}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2007,7 +2007,7 @@ GameObject:
   - component: {fileID: 1231864200}
   - component: {fileID: 1231864199}
   m_Layer: 5
-  m_Name: Speed Stat
+  m_Name: Time Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2423,10 +2423,10 @@ MonoBehaviour:
         - m_Target: {fileID: 1399807622}
           m_TargetAssemblyTypeName: DisplayStats, Assembly-CSharp
           m_MethodName: onHover
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1332352242}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2560,8 +2560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepSlider: {fileID: 1021912306}
   stepCounterText: {fileID: 588372415}
-  speed: 10
-  strength: 1
+  time: 10
+  distance: 1
   multiplier: 1
 --- !u!4 &1399807620
 Transform:
@@ -2592,8 +2592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSlider: {fileID: 107801515}
   stepCounterText: {fileID: 588372415}
-  speed: 10
-  strength: 10
+  time: 10
+  distance: 10
   multiplier: 1
 --- !u!114 &1399807622
 MonoBehaviour:
@@ -2608,9 +2608,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPanel: {fileID: 152460454}
-  strength: {fileID: 511017807}
-  speed: {fileID: 1231864199}
+  distance: {fileID: 0}
+  time: {fileID: 0}
   multiplier: {fileID: 424044817}
+  stepInstance: {fileID: 1399807619}
+  jumpInstance: {fileID: 1399807621}
 --- !u!1 &1541118505
 GameObject:
   m_ObjectHideFlags: 0

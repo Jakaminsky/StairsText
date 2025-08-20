@@ -8,8 +8,8 @@ public class DisplayStats : MonoBehaviour
     public Image statPanel;
     private RectTransform panelRect;
 
-    public TMP_Text strength;
-    public TMP_Text speed;
+    public TMP_Text distance;
+    public TMP_Text time;
     public TMP_Text multiplier;
 
     public Step stepInstance;
@@ -35,13 +35,13 @@ public class DisplayStats : MonoBehaviour
 
         if (button.name.Contains("Step"))
         {
-            strength.text = stepInstance.strength.ToString();
-            speed.text = stepInstance.speed.ToString();
+            distance.text = stepInstance.distance.ToString();
+            time.text = stepInstance.time.ToString();
             multiplier.text = stepInstance.multiplier.ToString();
         }else if (button.name.Contains("Jump"))
         {
-            strength.text = jumpInstance.strength.ToString();
-            speed.text = jumpInstance.speed.ToString();
+            distance.text = jumpInstance.distance.ToString();
+            time.text = jumpInstance.time.ToString();
             multiplier.text = jumpInstance.multiplier.ToString();
         }
 
