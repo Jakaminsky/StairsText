@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increase Time
+  m_text: Decrease Time
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3499,13 +3499,13 @@ RectTransform:
   - {fileID: 889424006}
   - {fileID: 144733725}
   - {fileID: 2040162114}
-  - {fileID: 152460453}
   - {fileID: 576015233}
   - {fileID: 1109851196}
   - {fileID: 422026657}
   - {fileID: 1236608196}
   - {fileID: 902138037}
   - {fileID: 646714548}
+  - {fileID: 152460453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4165,7 +4165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1236608198}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1705738113}
+        m_TargetAssemblyTypeName: TimeUpgrade, Assembly-CSharp
+        m_MethodName: onClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1236608198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4833,7 +4845,7 @@ GameObject:
   - component: {fileID: 1399807624}
   - component: {fileID: 1399807625}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Gameplay Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,7 +4865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepSlider: {fileID: 1021912306}
   stepCounterText: {fileID: 588372415}
-  time: 10
+  currentTime: 10
   distance: 1
   multiplier: 1
 --- !u!4 &1399807620
@@ -4885,7 +4897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSlider: {fileID: 107801515}
   stepCounterText: {fileID: 588372415}
-  time: 1000
+  currentTime: 1000
   distance: 10
   multiplier: 1
 --- !u!114 &1399807622
@@ -4923,7 +4935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leapSlider: {fileID: 1078522853}
   stepCounterText: {fileID: 588372415}
-  time: 10000
+  currentTime: 2
   distance: 100
   multiplier: 1
 --- !u!114 &1399807624
@@ -4940,7 +4952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundSlider: {fileID: 1037325698}
   stepCounterText: {fileID: 588372415}
-  time: 100000
+  currentTime: 100000
   distance: 1000
   multiplier: 1
 --- !u!114 &1399807625
@@ -4957,7 +4969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchSlider: {fileID: 144733726}
   stepCounterText: {fileID: 588372415}
-  time: 1000000
+  currentTime: 1000000
   distance: 10000
   multiplier: 1
 --- !u!1 &1541118505
@@ -5071,6 +5083,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687809552}
   m_CullTransparentMesh: 1
+--- !u!1 &1705738112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705738114}
+  - component: {fileID: 1705738113}
+  m_Layer: 0
+  m_Name: Upgrade Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1705738113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705738112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911f9eb8025cee945897f87316260982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1705738114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705738112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 548.5918, y: 360.28824, z: 3.2358005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983420726
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,3 +5663,4 @@ SceneRoots:
   - {fileID: 960176264}
   - {fileID: 1384331140}
   - {fileID: 1399807620}
+  - {fileID: 1705738114}

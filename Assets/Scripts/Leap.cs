@@ -9,7 +9,8 @@ public class Leap : MonoBehaviour
 
     public TMP_Text stepCounterText;
 
-    public float time = 10000.0f;
+    private float baseTime = 10000.0f;
+    public float currentTime = 10000.0f;
     public float distance = 100.0f;
     public float multiplier = 1.0f;
 
@@ -18,17 +19,21 @@ public class Leap : MonoBehaviour
 
     private void Start()
     {
-        timer = time;
+        Mathf.Clamp(currentTime, baseTime, 0.1f);
+
+        timer = currentTime;
         UpdateUI();
     }
 
     private void Update()
     {
+        currentTime = baseTime * ((Mathf.Pow(0.9698f, TimeUpgrade.upgradeNumJump) - Mathf.Pow(0.9698f, 300)) / (1 - Mathf.Pow(0.9698f, 300)));
+
         if (isRunning)
         {
             timer -= Time.deltaTime;
 
-            leapSlider.value = 1 - (timer / time);
+            leapSlider.value = 1 - (timer / currentTime);
 
             if (timer <= 0f)
             {
@@ -42,7 +47,7 @@ public class Leap : MonoBehaviour
     {
         if (!isRunning)
         {
-            timer = time;
+            timer = currentTime;
             isRunning = true;
         }
     }
