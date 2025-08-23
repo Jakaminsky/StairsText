@@ -9,7 +9,8 @@ public class Launch : MonoBehaviour
 
     public TMP_Text stepCounterText;
 
-    public float time = 1000000.0f;
+    private float baseTime = 1000000.0f;
+    public float currentTime = 1000000.0f;
     public float distance = 10000.0f;
     public float multiplier = 1.0f;
 
@@ -18,17 +19,21 @@ public class Launch : MonoBehaviour
 
     private void Start()
     {
-        timer = time;
+        Mathf.Clamp(currentTime, baseTime, 0.1f);
+
+        timer = currentTime;
         UpdateUI();
     }
 
     private void Update()
     {
+        currentTime = baseTime * ((Mathf.Pow(0.9818f, TimeUpgrade.upgradeNumJump) - Mathf.Pow(0.9818f, 500)) / (1 - Mathf.Pow(0.9818f, 500)));
+
         if (isRunning)
         {
             timer -= Time.deltaTime;
 
-            launchSlider.value = 1 - (timer / time);
+            launchSlider.value = 1 - (timer / currentTime);
 
             if (timer <= 0f)
             {
@@ -42,7 +47,8 @@ public class Launch : MonoBehaviour
     {
         if (!isRunning)
         {
-            timer = time;
+
+            timer = currentTime;
             isRunning = true;
         }
     }

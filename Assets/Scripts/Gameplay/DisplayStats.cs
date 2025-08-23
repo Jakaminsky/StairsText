@@ -40,7 +40,9 @@ public class DisplayStats : MonoBehaviour
         }
         else
         {
-            return Mathf.RoundToInt((float)number).ToString();
+            float rounded = Mathf.Round(number * 10f) / 10f;
+            float clamped = Mathf.Clamp(rounded, 0.1f, 10000000.0f);
+            return clamped.ToString("F1");
         }
     }
 
@@ -51,31 +53,31 @@ public class DisplayStats : MonoBehaviour
         if (button.name.Contains("Step"))
         {
             distance.text = FormatNumber(stepInstance.distance);
-            time.text = FormatNumber(stepInstance.time);
+            time.text = FormatNumber(stepInstance.currentTime);
             multiplier.text = FormatNumber(stepInstance.multiplier);
         }
         else if (button.name.Contains("Jump"))
         {
             distance.text = FormatNumber(jumpInstance.distance);
-            time.text = FormatNumber(jumpInstance.time);
+            time.text = FormatNumber(jumpInstance.currentTime);
             multiplier.text = FormatNumber(jumpInstance.multiplier);
         }
         else if (button.name.Contains("Leap"))
         {
             distance.text = FormatNumber(leapInstance.distance);
-            time.text = FormatNumber(leapInstance.time);
+            time.text = FormatNumber(leapInstance.currentTime);
             multiplier.text = FormatNumber(leapInstance.multiplier);
         }
         else if (button.name.Contains("Bound"))
         {
             distance.text = FormatNumber(boundInstance.distance);
-            time.text = FormatNumber(boundInstance.time);
+            time.text = FormatNumber(boundInstance.currentTime);
             multiplier.text = FormatNumber(boundInstance.multiplier);
         }
         else if (button.name.Contains("Launch"))
         {
             distance.text = FormatNumber(launchInstance.distance);
-            time.text = FormatNumber(launchInstance.time);
+            time.text = FormatNumber(launchInstance.currentTime);
             multiplier.text = FormatNumber(launchInstance.multiplier);
         }
     }

@@ -3,14 +3,15 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class Leap : MonoBehaviour
+public class Bound : MonoBehaviour
 {
-    public Slider leapSlider;
+    public Slider boundSlider;
 
     public TMP_Text stepCounterText;
 
-    public float time = 10000.0f;
-    public float distance = 100.0f;
+    private float baseTime = 100000.0f;
+    public float currentTime = 100000.0f;
+    public float distance = 1000.0f;
     public float multiplier = 1.0f;
 
     private float timer = 0;
@@ -18,36 +19,40 @@ public class Leap : MonoBehaviour
 
     private void Start()
     {
-        timer = time;
+        Mathf.Clamp(currentTime, baseTime, 0.1f);
+
+        timer = currentTime;
         UpdateUI();
     }
 
     private void Update()
     {
+        currentTime = baseTime * ((Mathf.Pow(0.9773f, TimeUpgrade.upgradeNumJump) - Mathf.Pow(0.9773f, 400)) / (1 - Mathf.Pow(0.9773f, 400)));
+
         if (isRunning)
         {
             timer -= Time.deltaTime;
 
-            leapSlider.value = 1 - (timer / time);
+            boundSlider.value = 1 - (timer / currentTime);
 
             if (timer <= 0f)
             {
-                takeLeap();
+                takeBound();
                 isRunning = false;
             }
         }
     }
 
-    public void onClickLeap()
+    public void onClickBound()
     {
         if (!isRunning)
         {
-            timer = time;
+            timer = currentTime;
             isRunning = true;
         }
     }
 
-    private void takeLeap()
+    private void takeBound()
     {
         Step.stepCounter += distance * multiplier;
 
@@ -61,9 +66,9 @@ public class Leap : MonoBehaviour
             stepCounterText.text = Step.stepCounter.ToString();
         }
 
-        if (leapSlider != null)
+        if (boundSlider != null)
         {
-            leapSlider.value = 0;
+            boundSlider.value = 0;
         }
     }
 
